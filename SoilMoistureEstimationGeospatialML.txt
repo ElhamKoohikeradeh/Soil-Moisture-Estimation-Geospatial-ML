@@ -1,0 +1,135 @@
+1) Geospatial / Remote Sensing / Raster Processing
+
+These libraries are used for handling spatial data (vector + raster) and Earth observation workflows.
+
+geopandas
+Used for working with vector geospatial data (e.g., shapefiles, GeoJSON). Extends pandas with spatial operations.
+rasterio
+Handles reading, writing, and processing raster datasets (e.g., GeoTIFF, satellite imagery).
+rasterstats
+Computes zonal statistics (e.g., mean, max) of raster values over vector geometries (polygons/points).
+xarray
+Designed for multi-dimensional arrays (e.g., time-series satellite data, NetCDF). Useful for spatiotemporal analysis.
+ee (Google Earth Engine API)
+Python interface to access and process large-scale geospatial datasets in Google Earth Engine.
+earthengine-api
+Official Earth Engine Python package (same ecosystem as ee).
+geemap
+High-level interface for Earth Engine, enabling visualization, mapping, and easier interaction in notebooks.
+2) Core Data Analysis / Scientific Computing
+
+These are foundational libraries for numerical and tabular data processing.
+
+numpy
+Core numerical computing library for arrays and mathematical operations.
+pandas
+Provides DataFrame structures for tabular data manipulation and analysis.
+joblib
+Used for saving/loading models and enabling parallel computation.
+3) Visualization / Plotting
+
+Used to create figures, charts, and visual outputs.
+
+matplotlib
+Standard plotting library for static figures (publication-ready plots).
+seaborn
+Built on top of matplotlib; simplifies statistical visualizations.
+plotly
+Interactive plotting library (web-based, dynamic visualizations).
+plotly kaleido
+Enables exporting plotly figures to static formats (PNG, PDF).
+DateFormatter (from matplotlib.dates)
+Formats date/time axes in time-series plots.
+4) Machine Learning / AI
+a) Scikit-learn ecosystem
+
+General-purpose machine learning tools:
+
+scikit-learn
+Core ML library for regression, classification, preprocessing, and evaluation.
+
+Key components used:
+
+train_test_split → splits data into training/testing sets
+StandardScaler → normalizes features
+LinearRegression → linear model
+RandomForestRegressor → ensemble tree-based model
+MLPRegressor → neural network model
+mean_squared_error, mean_absolute_error, r2_score → evaluation metrics
+b) Gradient Boosting Libraries
+
+Advanced ML models for high-performance prediction:
+
+xgboost → optimized gradient boosting framework
+catboost → handles categorical variables efficiently
+lightgbm → fast, scalable boosting algorithm
+5) Optimization / Mathematical Modeling
+
+Used for calibration and parameter estimation.
+
+scipy.optimize.curve_fit
+Fits functions to data (nonlinear regression).
+scipy.optimize.minimize
+General-purpose optimization (minimization problems).
+6) Statistical Modeling
+statsmodels
+Advanced statistical analysis (regression, hypothesis testing, time series).
+7) Large-Scale / Parallel Data Processing
+dask
+Enables parallel and out-of-core computation for large datasets.
+dask.dataframe
+Scales pandas workflows to larger-than-memory datasets.
+8) Excel / Output Export
+XlsxWriter
+Writes structured Excel files with formatting, charts, and tables.
+9) Standard Python Utilities
+
+Built-in libraries for general-purpose tasks.
+
+os → file paths and directory management
+csv → reading/writing CSV files
+time → timing and delays
+glob → file pattern matching
+datetime → date and time handling
+10) Non-Dependency Content (Not for requirements.txt)
+
+These appear in your file but are not packages and should NOT be included in requirements.txt.
+
+A) Earth Engine Execution Code
+ee.Authenticate()
+ee.Initialize()
+ee.Initialize(project=...)
+
+➡️ These are runtime commands, not dependencies.
+
+B) Task Monitoring Code
+ee.batch.Task.list()
+task.status()
+
+➡️ Operational logic, not installable packages.
+
+C) Project Configuration
+File paths (sar_folder, ndvi_folder, etc.)
+Model coefficients (coefficients = {...})
+
+➡️ Project-specific settings.
+
+D) Debug / Diagnostic Code
+print(os.getcwd())
+print(xgb.__version__)
+
+➡️ Used for debugging, not dependencies.
+
+
+
+
+
+The stack is like this:
+
+Remote Sensing Layer → Earth Engine + raster/vector processing
+Data Processing Layer → pandas, numpy
+Modeling Layer → scikit-learn + boosting models
+Calibration Layer → scipy, statsmodels
+Visualization Layer → matplotlib, plotly
+Scaling Layer → dask
+Output Layer → Excel + exports
